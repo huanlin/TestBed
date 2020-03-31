@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "ConsoleApp1/1.0.0": {
+        "dependencies": {
+          "DumpExtensions": "2.0.0"
+        },
+        "runtime": {
+          "ConsoleApp1.dll": {}
+        }
+      },
+      "DumpExtensions/2.0.0": {
+        "runtime": {
+          "lib/netcoreapp2.0/DumpExtensions.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ConsoleApp1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DumpExtensions/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eBqe0bpE141S5ZroiHEF5t5KwvH8kfOBMq/SFQLyFG36fRs2sX/Njo811U5GzcMzSp/JV2dxqe3IoHb7aOZ6rA==",
+      "path": "dumpextensions/2.0.0",
+      "hashPath": "dumpextensions.2.0.0.nupkg.sha512"
+    }
+  }
+}
