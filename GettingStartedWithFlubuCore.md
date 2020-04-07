@@ -24,7 +24,7 @@ Or, if you want to get new features as soon as possible, you can install a previ
 
 👉 I was using  v5.0.3 in this article.
 
-After the global tool installed, you can run your build script from command line.
+After the global tool is installed, you can run your build script from command line.
 
 Reminder: when you update FlubuCore packages from your build project, don't forget to update this global tool as well. You can use the following command to update it:
 
@@ -34,11 +34,11 @@ Reminder: when you update FlubuCore packages from your build project, don't forg
 
 One thing I like FlubuCore (and Nuke) is that we can write our build script with C#, just like what we do as usual. So the first step is adding a new project to your .NET solution, and it will be the "build project" for building your .NET solution.
 
-> p.s. FlubuCore provides a project template that can help you create a build script. However, I prefer do it "by hand" at the first time.
+> p.s. FlubuCore provides a project template that can help you create a build script. However, I prefer to do it "by hand" at the first time.
 
 While creating your build project, it's suggested that you follow conventions and name it build, Build,  or _Build , and place it under your root of repository or source folder. Following conventions can save you some time and troubles. (There will be a list of common names later.）
 
-Now open your solution in Visual Studio,  and add a new project with Class Library (.NET Core) template. Use "build" as the project name, and place it under the root of your repository. The following figure shows a directory layout I preferred:
+Now open your solution in Visual Studio, and add a new project with Class Library (.NET Core) template. Use "Build" as the project name, and place it under the root of your repository. The following figure shows a directory layout I preferred:
 
 (FIGURE 1)
 
@@ -61,7 +61,7 @@ In which "output" folder is for build output, and it will be created during buil
 
 You can also place your build project under "source" directory. No matter how you structure your project folders, the important thing is to make sure FlubuCore can find your build script and solution file.
 
-After the build project created, you need to add FlubuCore package reference to it.
+After the build project is created, you need to add FlubuCore package reference to it.
 
 (FIGURE 2. NuGet window)
 
@@ -81,9 +81,9 @@ This example demonstrates the following tasks:
 
 > p.s. You can also use UpdateNetCoreVersionTask method for product versioning. With this approach, FlubuCore will add <Version>、<AssemblyVersion>、<FileVersion> elements to your .csproj files during build process.
 
-In this example, ProductVersion.txt is simply a text file that contains one line of text indicating your product version, for example "1.3.2."
+In this example, ProductVersion.txt is simply a text file that contains one line of text indicating your product version, for example "1.3.2.0"
 
-Once your build script is ready, make sure it compiles with no errors, then you can move on to next step and run your build script with flubu command line tool.
+Once your build script is ready, make sure it compiles with no errors, then you can move on to the next step and run your build script with flubu command line tool.
 
 ## Run Your Build Script
 
@@ -97,9 +97,9 @@ The build process looks like:
 
 (FIGURE 3: Build process)
 
-Note there are messages telling you FlubuCore has found your build script file 'build/BuildScript.cs' and will use it. As mentioned earlier, if you follow FlubuCore's conventions for naming and file location, things will be easier.
+Note there are messages telling you FlubuCore has found your build script file 'build/BuildScript.cs' and that it will use it. As mentioned earlier, if you follow FlubuCore's conventions for naming and file location, things will be easier.
 
-The official document has a list of default (automatic searched)  file and directory name, shown as below (the item with bold and colorful font is my preference):
+The official document has a list of default (automatic searched)  files and directory names, shown as below (the item with bold and colorful font is my preference):
 
 - Build.cs
 - BuildScript.cs
@@ -120,18 +120,18 @@ The official document has a list of default (automatic searched)  file and direc
 
 ## Using .flubu File
 
-If FlubuCore couldn't find your build script files due to whatever reasons, you can tell FlubuCore where they are with a simple text file. Specifically, you create a text file named ".flubu" and place it under the root directory of your repository. In that file, you explicitly specify both of your build script file (.cs) and project file (.csproj) with relative path names.
+If FlubuCore couldn't find your build script files due to whatever reasons, you can tell FlubuCore where they are with a simple text file. Specifically, you create a text file named ".flubu" and place it under the root directory of your repository. In that file, you explicitly specify both of your build script file (.cs) and project file (.csproj) with relative paths.
 
-FlubuCore command line tool has an option to help you create .flubu file,  simply type  flubu setup and answer questions, shown as the figure below:
+FlubuCore command line tool has an option to help you create .flubu file,  simply type `flubu setup` and answer questions, shown as the figure below:
 
 (FIGURE 4: screenshot of flubu setup)
 
-After you answered questions and closed the program, you can find a ".flubu" file created at current directory.  The content of .flubu file looks like:
+After you answered questions and closed the program, you can find a ".flubu" file created at current directory. The content of .flubu file looks like:
 
 ```build/BuildScript.cs```
 ```build/build.csproj```
 
-Despite the content of .flubu file is pretty simple, it can make your life a lot easier. Specifically, when FlubuCore starts to run a build script, it searches .flubu file automatically, and it keeps searching it all the way up through parent directories until that file is found or reached the root directory of current drive. The location where a .flubu file is found will be used as the "work directory" during a build process, and a correct "work directory" is crucial  for us to use relative path in our  build scripts. You don't want to move your build scripts to other machines only to see them failed because some files are not found.
+Despite the content of .flubu file is pretty simple, it can make your life a lot easier. Specifically, when FlubuCore starts to run a build script, it searches .flubu file automatically, and it keeps searching it all the way up through parent directories until that file is found or reached the root directory of current drive. The location where a .flubu file is found will be used as the "work directory" during a build process, and a correct "work directory" is crucial  for us to use relative path in the build scripts. You don't want to move your build scripts to other machines only to see them failed because some files are not found.
 
 > 👉 Bottom line: Use .flubu file and avoid full path (absolute path) in your build scripts.
 
@@ -139,4 +139,4 @@ I hope this article can help you get started with FlubuCore. Enjoy!
 
 If you like it, don't forget to [give it a "star" on GitHub](https://github.com/dotnetcore/FlubuCore/)
 
-For more information, see [FlubuCore online document](https://flubucore.dotnetcore.xyz/). 
+For more information, see [FlubuCore online document](https://flubucore.dotnetcore.xyz/).
